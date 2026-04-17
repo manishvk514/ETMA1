@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Everything Media</title>
+    <meta name="description" content="A directors' studio. We work with brands that have outgrown what templates can do for them.">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Everything Media">
+    <meta property="og:description" content="A directors' studio.">
+    <meta property="og:type" content="website">
+
+    <!-- Favicon placeholder -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23C4A775%22>·</text></svg>">
+
+    <!-- Fonts: Instrument Serif (display) + JetBrains Mono (UI) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ========= PRELOADER ========= -->
+    <div id="preloader">
+        <div class="preloader-inner">
+            <span class="preloader-mark">em</span>
+            <span class="preloader-bar"></span>
+        </div>
+    </div>
+
+    <!-- ========= GRAIN OVERLAY (film-like) ========= -->
+    <div class="grain"></div>
+
+    <!-- ========= CURSOR ========= -->
+    <div class="cursor-light" id="cursor-light"></div>
+    <div class="cursor-dot" id="cursor-dot"></div>
+    <div class="cursor-ring" id="cursor-ring">
+        <span class="cursor-label" id="cursor-label"></span>
+    </div>
+
+    <!-- ========= SCROLL PROGRESS ========= -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- ========= NAV ========= -->
+    <nav id="nav">
+        <a href="#top" class="nav-logo">everything media</a>
+        <div class="nav-links">
+            <a href="#work">work</a>
+            <a href="#method">method</a>
+            <a href="#contact" class="nav-cta">start a project <span class="arrow">→</span></a>
+        </div>
+        <button class="nav-mobile-toggle" id="nav-mobile-toggle" aria-label="Open menu">
+            <span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- ========= MOBILE MENU ========= -->
+    <div id="mobile-menu">
+        <button class="menu-close" id="menu-close" aria-label="Close menu">×</button>
+        <a href="#work" class="mobile-link">work</a>
+        <a href="#method" class="mobile-link">method</a>
+        <a href="#contact" class="mobile-link">start a project</a>
+        <div class="mobile-menu-footer">hello@everythingmedia.studio</div>
+    </div>
+
+    <!-- ========= 01 — ENTRY ========= -->
+    <section id="top" class="section hero">
+        <div class="hero-media">
+            <!-- Placeholder reel / still rotation. Replace with real reel when ready. -->
+            <div class="hero-stills">
+                <div class="hero-still" style="background-image: url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=90&w=2400');"></div>
+                <div class="hero-still" style="background-image: url('https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=90&w=2400');"></div>
+                <div class="hero-still" style="background-image: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=90&w=2400');"></div>
+                <div class="hero-still" style="background-image: url('https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=90&w=2400');"></div>
+                <div class="hero-still" style="background-image: url('https://images.unsplash.com/photo-1611348586840-ea9872d33411?auto=format&fit=crop&q=90&w=2400');"></div>
+                <div class="hero-still" style="background-image: url('https://images.unsplash.com/photo-1574267432644-f410f8ec2d4b?auto=format&fit=crop&q=90&w=2400');"></div>
+            </div>
+            <div class="hero-vignette"></div>
+        </div>
+
+        <div class="hero-content">
+            <h1 class="hero-headline">
+                <span class="line-wrap"><span class="line-inner">Direction,</span></span>
+                <span class="line-wrap"><span class="line-inner"><em>first</em>.</span></span>
+            </h1>
+            <div class="hero-sub">
+                <span class="hero-sub-line"></span>
+                <span class="hero-sub-text">a directors' studio</span>
+                <span class="hero-sub-line"></span>
+            </div>
+        </div>
+
+        <div class="hero-footer">
+            <div class="hero-foot-left">
+                <span class="mono-label">001</span>
+                <span class="mono-label dim">entry</span>
+            </div>
+            <div class="hero-foot-right">
+                <span class="scroll-cue">
+                    <span class="scroll-cue-text">scroll</span>
+                    <span class="scroll-cue-line"></span>
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========= 02 — POSITIONING ========= -->
+    <section id="positioning" class="section positioning">
+        <div class="section-head">
+            <span class="mono-label">002 / what we are</span>
+        </div>
+        <div class="positioning-body">
+            <p class="reveal-line">We are a directors' studio.</p>
+            <p class="reveal-line">We make brand films, music videos, trailers, and campaign work for people who have outgrown what templates can do for them.</p>
+            <p class="reveal-line">Every frame is composed. Every cut is decided. Every image exists because someone chose it.</p>
+            <p class="reveal-line">We work with new tools. We don't let them run the room.</p>
+        </div>
+    </section>
+
+    <!-- ========= 03 — SELECTED WORK ========= -->
+    <section id="work" class="section work">
+        <div class="section-head">
+            <span class="mono-label">003 / selected work</span>
+            <h2 class="section-headline"><em>Decisions you can see.</em></h2>
+        </div>
+
+        <div class="work-grid">
+
+            <!-- Row 1: Full-width hero project -->
+            <a href="#" class="work-tile tile-full" data-cursor="view" data-label="view case">
+                <div class="tile-media">
+                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=90&w=2400" alt="JioStar brand film">
+                    <div class="tile-overlay"></div>
+                </div>
+                <div class="tile-meta">
+                    <div class="tile-meta-left">
+                        <span class="mono-label dim">01 / brand film</span>
+                        <h3 class="tile-name">JioStar</h3>
+                    </div>
+                    <div class="tile-meta-right">
+                        <p class="tile-logline">A family of three, fractured and re-formed across nine channels.</p>
+                        <span class="mono-label dim">2026</span>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Row 2: Two half-widths -->
+            <div class="work-row-split">
+                <a href="#" class="work-tile tile-half" data-cursor="view" data-label="view case">
+                    <div class="tile-media">
+                        <img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=90&w=1600" alt="Hero Vida">
+                        <div class="tile-overlay"></div>
+                    </div>
+                    <div class="tile-meta">
+                        <div class="tile-meta-left">
+                            <span class="mono-label dim">02 / campaign</span>
+                            <h3 class="tile-name">Hero Vida</h3>
+                        </div>
+                        <div class="tile-meta-right">
+                            <p class="tile-logline">Electric, shot in places the physical crew couldn't reach.</p>
+                            <span class="mono-label dim">2026</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="work-tile tile-half" data-cursor="view" data-label="view case">
+                    <div class="tile-media">
+                        <img src="https://images.unsplash.com/photo-1611348586840-ea9872d33411?auto=format&fit=crop&q=90&w=1600" alt="Krishna director test">
+                        <div class="tile-overlay"></div>
+                    </div>
+                    <div class="tile-meta">
+                        <div class="tile-meta-left">
+                            <span class="mono-label dim">03 / director test</span>
+                            <h3 class="tile-name">Krishna</h3>
+                        </div>
+                        <div class="tile-meta-right">
+                            <p class="tile-logline">The first frames of a feature that won't look like anything before it.</p>
+                            <span class="mono-label dim">2026</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Row 3: Third + two-thirds -->
+            <div class="work-row-asymmetric">
+                <a href="#" class="work-tile tile-third" data-cursor="view" data-label="view case">
+                    <div class="tile-media">
+                        <img src="https://images.unsplash.com/photo-1574267432644-f410f8ec2d4b?auto=format&fit=crop&q=90&w=1200" alt="Surili Didi">
+                        <div class="tile-overlay"></div>
+                    </div>
+                    <div class="tile-meta">
+                        <div class="tile-meta-left">
+                            <span class="mono-label dim">04 / animation</span>
+                            <h3 class="tile-name">Surili Didi</h3>
+                        </div>
+                        <div class="tile-meta-right">
+                            <span class="mono-label dim">2026</span>
+                        </div>
+                    </div>
+                </a>
+
+                <a href="#" class="work-tile tile-twothirds" data-cursor="view" data-label="view case">
+                    <div class="tile-media">
+                        <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=90&w=2000" alt="Spec piece">
+                        <div class="tile-overlay"></div>
+                    </div>
+                    <div class="tile-meta">
+                        <div class="tile-meta-left">
+                            <span class="mono-label dim">05 / short film</span>
+                            <h3 class="tile-name">Untitled</h3>
+                        </div>
+                        <div class="tile-meta-right">
+                            <p class="tile-logline">A spec piece. The kind of work we make when nobody is asking.</p>
+                            <span class="mono-label dim">2026</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="work-more">
+            <a href="#" class="link-arrow">more work <span class="arrow">→</span></a>
+        </div>
+    </section>
+
+    <!-- ========= 04 — CAPABILITIES ========= -->
+    <section id="capabilities" class="section capabilities">
+        <div class="section-head">
+            <span class="mono-label">004 / what we make</span>
+            <h2 class="section-headline"><em>A short answer to a long question.</em></h2>
+        </div>
+
+        <div class="cap-grid">
+            <div class="cap-item">
+                <h3 class="cap-name">Brand films</h3>
+                <p class="cap-desc">Launches, campaigns, and anthem pieces. Commercial work built the way scripted work is built — with a director, a point of view, and a cut that earns attention.</p>
+            </div>
+            <div class="cap-item">
+                <h3 class="cap-name">Music videos</h3>
+                <p class="cap-desc">Worlds built for songs. We start from the track, design the language, and deliver work an artist uses as their signature.</p>
+            </div>
+            <div class="cap-item">
+                <h3 class="cap-name">Trailers &amp; titles</h3>
+                <p class="cap-desc">For films, series, and launches. Pace, rhythm, and the withheld image. Work that gets people to the theatre, not past the skip button.</p>
+            </div>
+            <div class="cap-item">
+                <h3 class="cap-name">Motion &amp; finishing</h3>
+                <p class="cap-desc">Compositing, CG, cleanup, and grade. The same post pipeline any finishing house uses, integrated so the seams disappear.</p>
+            </div>
+            <div class="cap-item">
+                <h3 class="cap-name">Visual development</h3>
+                <p class="cap-desc">Concept art, look books, pre-viz, and the visual bible for longer projects. The world before the shoot.</p>
+            </div>
+            <div class="cap-item">
+                <h3 class="cap-name">Anything else worth making</h3>
+                <p class="cap-desc">Short films, experimental work, formats that don't have a name yet. If it's built frame by frame, we're interested.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========= 05 — METHOD ========= -->
+    <section id="method" class="section method">
+        <div class="section-head">
+            <span class="mono-label">005 / method</span>
+            <h2 class="section-headline"><em>Before we make a frame,<br>we make a decision.</em></h2>
+        </div>
+
+        <div class="method-steps">
+
+            <div class="method-step" data-step="1">
+                <div class="step-number mono-label">01 — intent</div>
+                <div class="step-body">
+                    <h3 class="step-title">What should the viewer feel.</h3>
+                    <p class="step-text">Before references, before tools, before a single image — we decide the emotion the work has to land on. Everything after this serves that answer.</p>
+                </div>
+            </div>
+
+            <div class="method-step" data-step="2">
+                <div class="step-number mono-label">02 — world</div>
+                <div class="step-body">
+                    <h3 class="step-title">Build the universe on paper.</h3>
+                    <p class="step-text">Palette, lens, grade, light, grain, the tactile quality of the image. The world is the brief. Execution is what comes after.</p>
+                </div>
+            </div>
+
+            <div class="method-step" data-step="3">
+                <div class="step-number mono-label">03 — frame</div>
+                <div class="step-body">
+                    <h3 class="step-title">Compose every shot.</h3>
+                    <p class="step-text">Boarded the way any film is boarded — shot by shot, with the deliberateness a cinematographer brings to a set. Light falls where it should. Subjects exist where they must.</p>
+                </div>
+            </div>
+
+            <div class="method-step" data-step="4">
+                <div class="step-number mono-label">04 — motion</div>
+                <div class="step-body">
+                    <h3 class="step-title">Control what moves.</h3>
+                    <p class="step-text">Micro-expression, camera drift, the weight of a pause, the space between cuts. Movement is how image becomes feeling.</p>
+                </div>
+            </div>
+
+            <div class="method-step" data-step="5">
+                <div class="step-number mono-label">05 — finish</div>
+                <div class="step-body">
+                    <h3 class="step-title">Deliver when it's right.</h3>
+                    <p class="step-text">Color, sound, and the final cut get the same scrutiny as everything upstream. We deliver when the work stops asking for changes.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ========= 06 — CONVICTION ========= -->
+    <section id="conviction" class="section conviction">
+        <h2 class="conviction-text">
+            <span class="conv-line">The tools are new.</span>
+            <span class="conv-line">The obsession is not.</span>
+            <br>
+            <span class="conv-line">Our work should not feel</span>
+            <span class="conv-line">like it was made by a machine.</span>
+            <br>
+            <span class="conv-line">It should feel like it was made</span>
+            <span class="conv-line">by <em>someone who could not</em></span>
+            <span class="conv-line"><em>stop thinking about it.</em></span>
+        </h2>
+    </section>
+
+    <!-- ========= 08 — START A PROJECT ========= -->
+    <section id="contact" class="section contact">
+        <div class="section-head">
+            <span class="mono-label">006 / start a project</span>
+            <h2 class="section-headline"><em>Tell us what you're trying to make.</em></h2>
+            <p class="contact-sub">We read every note that comes through.</p>
+        </div>
+
+        <form id="contact-form" class="contact-form" novalidate>
+            <div class="form-row">
+                <div class="form-field">
+                    <input type="text" id="f-name" name="name" required autocomplete="name">
+                    <label for="f-name">your name</label>
+                    <span class="form-line"></span>
+                </div>
+                <div class="form-field">
+                    <input type="text" id="f-company" name="company" autocomplete="organization">
+                    <label for="f-company">company or project</label>
+                    <span class="form-line"></span>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-field">
+                    <input type="email" id="f-email" name="email" required autocomplete="email">
+                    <label for="f-email">email</label>
+                    <span class="form-line"></span>
+                </div>
+                <div class="form-field">
+                    <select id="f-type" name="type" required>
+                        <option value="" disabled selected></option>
+                        <option value="brand-film">brand film</option>
+                        <option value="music-video">music video</option>
+                        <option value="trailer">trailer / titles</option>
+                        <option value="vfx">motion &amp; finishing</option>
+                        <option value="visdev">visual development</option>
+                        <option value="other">something else</option>
+                    </select>
+                    <label for="f-type">type of work</label>
+                    <span class="form-line"></span>
+                </div>
+            </div>
+
+            <div class="form-row single">
+                <div class="form-field">
+                    <textarea id="f-message" name="message" rows="4" required></textarea>
+                    <label for="f-message">tell us about it — what you're making, what you've tried, what you want it to feel like</label>
+                    <span class="form-line"></span>
+                </div>
+            </div>
+
+            <div class="form-submit-row">
+                <button type="submit" class="submit-btn" data-cursor="send">
+                    <span class="submit-text">send</span>
+                    <span class="submit-arrow">→</span>
+                </button>
+                <div class="form-status" id="form-status"></div>
+            </div>
+        </form>
+
+        <div class="contact-meta">
+            <div class="meta-item">
+                <span class="mono-label dim">direct</span>
+                <a href="mailto:hello@everythingmedia.studio" class="meta-link">hello@everythingmedia.studio</a>
+            </div>
+            <div class="meta-item">
+                <span class="mono-label dim">elsewhere</span>
+                <div class="meta-socials">
+                    <a href="#" class="meta-link">instagram</a>
+                    <a href="#" class="meta-link">linkedin</a>
+                    <a href="#" class="meta-link">vimeo</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========= FOOTER ========= -->
+    <footer class="footer">
+        <div class="footer-mark">everything media</div>
+        <div class="footer-line"></div>
+        <div class="footer-bottom">
+            <span class="mono-label dim">© 2026</span>
+            <span class="mono-label dim">all frames reserved</span>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
