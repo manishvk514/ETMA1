@@ -1,0 +1,55 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+
+# Node
+web/node_modules/
+web/dist/
+web/test-results/
+web/playwright-report/
+
+# Models (downloaded into ~/.cache, never committed)
+models/
+*.pth
+*.pt
+*.onnx
+*.bin
+*.safetensors
+
+# Run outputs: commit only report/metrics/csv/png + small demos (docs/09 §9.6)
+outputs/**/tts/
+outputs/**/run.log
+*.wav
+!media/previews/*.wav
+
+# Synthetic clips are regenerated (make synth); large media are not committed
+data/clips/*
+!data/clips/.gitkeep
+data/sfx/*
+!data/sfx/.gitkeep
+web/*.tsbuildinfo
+
+# Demo media: only the headline POC run is committed (docs/09 §9.6, each file < 25 MB)
+outputs/**/*.mp4
+outputs/**/_mix_*.wav
+!outputs/20261105-062141_synthetic_match_final2/demo_live.mp4
+!outputs/20261105-062141_synthetic_match_final2/demo_synced.mp4
+!outputs/20261105-062141_synthetic_match_final2/voices_only.wav
+web/e2e/*.png
+
+# Pilot session working folders (the pilot report copies what matters into outputs/pilot_<date>/)
+outputs/sessions/
+
+# local API keys and cloned voices (never committed)
+.env
+data/voices/
+
+# Fish previews are made at startup (and may contain your cloned voice)
+media/previews/*.fish.wav
+dist-pages/
+/tmp/

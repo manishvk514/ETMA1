@@ -1,135 +1,138 @@
-# Everything Media — website
+<p align="center"><img src="brand/wordmark-dark.png" alt="Altercast" width="420"></p>
 
-A 5-file static site. No build step. No framework. Drop on any host.
+# Altercast — Live Character Voice
 
-## Files
+**Any commentary. Any character. Live.** Altercast listens to sports commentary, turns it into
+text, works out who is speaking and how it felt, and re-speaks every line in a character voice —
+in sync with the picture, with the crowd kept.
 
+| | Where |
+|---|---|
+| Web app (GitHub Pages) | https://manishvk514.github.io/altercast/ |
+| Engine + full app (Hugging Face Space) | https://manishvk18-live-character-voice.hf.space |
+| Voice Studio (private, owner only) | https://huggingface.co/spaces/manishvk18/altercast-voice-studio |
+| Chrome extension (store package + listing) | [`extension-store/`](extension-store/) · source [`extension/`](extension/) |
+| Interactive project report | [`docs/report/`](docs/report/index.html) · on the website: `/altercast/report/` |
+| Promo video | [`promo/altercast-promo.mp4`](promo/altercast-promo.mp4) |
+| Brand (logo, colours, store graphics) | [`brand/`](brand/) · [`brand/BRAND.md`](brand/BRAND.md) |
+| Build log (every measured result) | [`docs/BUILD_LOG.md`](docs/BUILD_LOG.md) |
+| Hosting · voice library · state machines | [`docs/HOSTING.md`](docs/HOSTING.md) · [`docs/VOICE_LIBRARY.md`](docs/VOICE_LIBRARY.md) · [`docs/STATE_MACHINES.md`](docs/STATE_MACHINES.md) |
+
+The website is static (GitHub Pages can't run the Python engine); it talks to the engine on the
+Hugging Face Space and asks for the access code. Rebuild it with `make pages`.
+
+---
+
+## About the engine
+
+Listens to sports commentary, turns it into text, works out which commentator is speaking, reads
+the emotion of the moment, re-speaks every line in an original character voice and places it back
+in time while the crowd and game sound carry on — live, on a free, CPU-only, open-source stack.
+
+- **Stage A — Proof of Concept:** `make poc` runs the engine on a clip at honest live speed and
+  writes demo videos + a results report with measured delay.
+- **Stage B — Pilot:** `make dev` runs a web player: the video plays, each commentator gets a
+  voice, viewers switch voices while it plays, the original commentary is ducked, every line's
+  delay is shown and exportable.
+
+Spec: `docs/` · build rules: `CLAUDE.md` · progress and every measurement: `docs/BUILD_LOG.md` ·
+licences: `THIRD_PARTY_LICENSES.md`.
+
+> This folder is self-contained inside the `sd` repository (which also holds an unrelated
+> Next.js project at the root). Run every command from this folder.
+
+## Quick start
+
+Needs Python 3.11/3.12 (Kokoro does not support 3.13 yet), Node 20+, [`uv`](https://docs.astral.sh/uv/),
+FFmpeg and espeak-ng. ~1 GB of models download from Hugging Face on first use.
+
+```bash
+cd live-character-voice
+make setup            # system packages, CPU torch, Python + Node deps
+make download-models  # Whisper small.en/base.en, ECAPA, Kokoro-82M (+ voices)
+make synth            # 3-minute synthetic two-commentator clip + ground truth
+make poc              # POC at live speed → outputs/<run>/ (demo videos + report.md)
 ```
-everything-media/
-├── index.html      the site
-├── style.css       the design system
-├── script.js       the motion + form
-├── vercel.json     hosting config (for Vercel)
-└── README.md       this file
+
+Pilot web player:
+
+```bash
+make synth-pilot      # three-commentator clip + 20-minute stability clip
+make dev              # API on :8000, web app on :5173 → open http://localhost:5173
 ```
 
----
+Or serve everything from one port: `cd web && npm run build`, then
+`.venv/bin/python -m uvicorn app.main:app --port 8000` and open http://localhost:8000.
 
-## How to deploy — the easy way (Vercel, 10 minutes)
+## Faster, better: free hosted providers (optional)
 
-### Once only
+| Provider | What it improves | Free key | Set |
+|---|---|---|---|
+| Groq Whisper large-v3-turbo | speech-to-text 1.4 s → 0.4 s, WER 10.9 % → 6.9 % | https://console.groq.com/keys | `GROQ_API_KEY` |
+| Fish Audio S2.1 (`s2.1-pro-free`) | expressive voices with emotion tags, streamed (first audio ≈ 0.8 s) | https://fish.audio/app/api-keys | `FISH_API_KEY` |
 
-1. Go to **vercel.com** and sign up with your email or GitHub.
-2. Click **Add New → Project**.
-3. Choose **"Deploy without Git"** or just **drag the `everything-media` folder** into the browser window on vercel.com/new.
-4. Name it `everything-media`. Leave everything else as default.
-5. Click **Deploy**.
-6. You get a live URL in ~30 seconds. Something like `everything-media.vercel.app`.
+With both keys set, `provider: auto` (default) uses them and falls back to the local models on any
+error. Measured: the new voice starts 1.8 s (median) after the commentator's line ends, vs 4.1 s
+fully local.
 
-That's the site. Live. Worldwide.
+## Your own voice — Voice Lab (instant or professional cloning)
+Needs a free Fish Audio key: click **Keys** in the top bar (or **Connect Fish Audio** in Voice Lab),
+paste it, and it switches on at once — or use `make keys`. Problems? Run `make doctor`. Open **Voice Lab** in the top bar:
+- **Instant clone** — 10–30 s of one voice (15 s ideal), ready in ~5 s.
+- **Professional clone** — 1–10 min recording (2–5 min is the sweet spot), ready in ~1 min. Keeps
+  only the main speaker, picks the cleanest speech, sorts calm / normal / excited delivery, tests
+  the clone in every mood and shows a likeness score (measured 0.68 vs 0.45 for instant on the
+  same recording).
+Upload a file or record in the browser (a reading script is shown). Then try any line in any mood
+in the **Playground**, and cast the voice on a commentator in **Studio → Cast the voices**.
+Best sample: one person, no music or other voices, quiet room, natural variety in tone.
+Only clone voices you own or have permission to use.
 
-### Connecting your domain (e.g. `everythingmedia.studio`)
+## Live streams (any tab)
+- **Chrome extension** (`extension/`, see its README): click it on any tab playing a live stream →
+  *Synced window* (picture held back, voices exactly on time) or *Live overlay* (voices + subtitles on
+  the tab).
+- **No install:** web app → **Live capture** → pick a tab with “Also share tab audio”.
+- **Command line:** `make live-test SRC="https://…/stream.m3u8"`. Design: `docs/LIVE_STREAMING.md`.
 
-1. In Vercel, open your project → **Settings → Domains**.
-2. Type your domain `everythingmedia.studio` and click **Add**.
-3. Vercel will show you 1–2 DNS records to add. Common case:
-   - **A record**: `@` pointing to `76.76.21.21`
-   - **CNAME record**: `www` pointing to `cname.vercel-dns.com`
-4. Log into wherever you bought the domain (GoDaddy, Namecheap, Hostinger, Cloudflare, etc).
-5. Open the **DNS settings** for the domain and add those two records exactly as Vercel shows them.
-6. Save. Wait 10 minutes – 24 hours. Vercel will auto-verify and your domain goes live with HTTPS automatically.
+## Synced vs Live mode
+- **Synced (recommended):** the picture is held back a few seconds (default 6 s, like a TV
+  broadcast delay) so every new voice starts exactly with its original line — measured felt delay
+  0.0 s typical, 90–100 % of lines exactly on time, nothing skipped or rushed.
+- **Live:** lowest latency; each line is re-voiced right after it is spoken (≈ 5 s felt delay).
+Player shortcuts: Space pause · M original on/off · V voices on/off · C subtitles · F full screen.
+Check what the voices really said: `python scripts/spoken_check.py outputs/sessions/<id>`.
 
-That's it. No other step.
+## Where the results are
 
----
+| What | Where |
+|---|---|
+| POC runs (record, delay log, metrics, report, demos) | `outputs/<YYYYMMDD-HHMMSS>_<clip>_<label>/` |
+| Final POC summary (3 live runs, medians) | `outputs/poc_summary.md` |
+| Pilot sessions | `outputs/sessions/<session_id>/` |
+| Final Pilot report | `outputs/pilot_<date>/report.md` |
+| UI screenshot + screen recording | `outputs/ui/player.png`, `outputs/ui/session.webm` |
 
-## How to update the site later
+## Commands
 
-### Option A — re-upload (simplest)
+| Command | What it does |
+|---|---|
+| `make check` | tools, versions, CPU count, model cache, network to Hugging Face |
+| `make lint` / `make test` | ruff + mypy --strict, eslint + tsc / pytest + vitest (no models) |
+| `make test-slow` | integration tests with real models |
+| `make bench` | model speed on this machine → `outputs/bench.json` |
+| `make poc CLIP=data/clips/<file>` | live-speed POC run on any clip you are allowed to use |
+| `python -m engine.cli report --run outputs/<run>` | recompute metrics + report from `record.json` |
+| `python scripts/ws_client.py --clip <file>` | scripted Pilot session over WebSocket |
+| `cd web && npm run e2e` | Playwright smoke test of the player (backend must be running) |
 
-1. Edit the file you want to change (e.g. replace an image URL in `index.html`).
-2. Zip the folder or just drag it into your Vercel project → **Deployments → Upload**.
-3. Vercel re-deploys in 30 seconds.
+## How it works (one paragraph)
 
-### Option B — use Claude Code (recommended for ongoing changes)
-
-If you want to edit this site by chatting instead of opening files:
-
-1. Install **Node.js** from https://nodejs.org (pick the LTS version, click install).
-2. Install **Claude Code** by opening the Terminal (Mac: Cmd+Space → "Terminal") and pasting:
-   ```
-   npm install -g @anthropic-ai/claude-code
-   ```
-3. Navigate to the folder:
-   ```
-   cd path/to/everything-media
-   ```
-4. Run:
-   ```
-   claude
-   ```
-5. Sign in with your Claude account. Now you can type things like "change the hero line to X" or "add a case study for JioStar" and it edits the files for you.
-6. To preview locally, open a second terminal in the same folder and run:
-   ```
-   npx serve
-   ```
-   It gives you a URL like `http://localhost:3000` — open it in a browser.
-
----
-
-## What the form currently does
-
-By default, the form opens the visitor's email client pre-filled with their message, addressed to `hello@everythingmedia.studio`. Works immediately, no backend needed.
-
-### Upgrading to a real backend (when you're ready)
-
-Use **Formspree** (free tier) or **Resend**. Both take ~5 minutes:
-
-**Formspree path:**
-1. Sign up at formspree.io.
-2. Create a new form. Copy its endpoint (looks like `https://formspree.io/f/xabcd1234`).
-3. In `index.html`, find `<form id="contact-form"` and add: `action="https://formspree.io/f/xabcd1234" method="POST"`.
-4. In `script.js`, find the `submitForm` function and replace its body with:
-   ```js
-   const res = await fetch(form.action, {
-       method: 'POST',
-       headers: { 'Accept': 'application/json' },
-       body: new FormData(form)
-   });
-   return { ok: res.ok };
-   ```
-5. Done. Inquiries arrive in your Formspree dashboard + forwarded to your email.
-
----
-
-## Replacing the placeholder images
-
-All hero stills and work images are currently from Unsplash as placeholders. To swap them:
-
-**Hero stills** — in `index.html`, find the `.hero-still` divs and replace the `background-image: url(...)` values with your own image URLs or local paths.
-
-**Work grid** — find each `<img src="..."` in the `#work` section and replace with your own. Dimensions to use:
-- Full-width tiles: 2400×1030 (21:9 ratio)
-- Half/third tiles: 1600×900 (16:9 ratio)
-
-If you want to host images locally, create an `images/` folder in the project and reference them as `images/jiostar-01.jpg`.
-
----
-
-## Fonts
-
-Loaded from Google Fonts — no license fee, no setup. Serif is **Instrument Serif**. Mono is **JetBrains Mono**.
-
-If you later want the premium **PP Editorial New** (by Pangram Pangram — better serif), it's a paid license; the swap is one line in `style.css`.
-
----
-
-## Browser support
-
-Chrome, Safari, Firefox, Edge — all current versions.
-
----
-
-## Credits
-
-Built by Manish Verma Kumawat with Claude (Anthropic). 2026.
+A feeder releases the clip's audio in 0.25 s chunks exactly when they would air. Silero VAD and a
+rule-based segmenter decide when a line is finished (pause, max length, a loud shout, a level jump,
+or a speaker change). Each line goes, in parallel, to faster-whisper (text), ECAPA + online
+clustering (who), and prosody rules (emotion). Kokoro-82M re-speaks it with the speaker's chosen
+voice and an emotion-shaped delivery. A scheduler places each voice line as soon as it is ready
+(never overlapping, catching up when behind) and everything is written to one in-memory live
+record that the report, the renderer and the web player all read. Every stage is behind a small
+provider interface, so a paid ASR/TTS can replace the free one by changing `config/engine.yaml`.
