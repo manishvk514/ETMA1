@@ -714,5 +714,5 @@ hosted engine as default.
   `*.github.io`. `make pages` → static site: app (talks to the HF engine, asks for the access
   code), `/report/` (interactive project report, now in docs/report/), `/download/` (extension zip,
   promo video). Checked in headless Chromium: loads, reaches the engine, deep links work.
-- README front page links every part. Standalone repository `altercast` = this folder with its
+- README front page links every part. Standalone repository `manishvk514/altercast` = this folder with its
   full history (git subtree split).

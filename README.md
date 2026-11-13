@@ -8,7 +8,7 @@ in sync with the picture, with the crowd kept.
 
 | | Where |
 |---|---|
-| Web app (GitHub Pages) | https://manish12323423546.github.io/altercast/ |
+| Web app (GitHub Pages) | https://manishvk514.github.io/altercast/ |
 | Engine + full app (Hugging Face Space) | https://manishvk18-live-character-voice.hf.space |
 | Voice Studio (private, owner only) | https://huggingface.co/spaces/manishvk18/altercast-voice-studio |
 | Chrome extension (store package + listing) | [`extension-store/`](extension-store/) · source [`extension/`](extension/) |
