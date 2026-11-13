@@ -10,7 +10,8 @@ OUT="${1:-dist-pages}"
 BASE="${PAGES_BASE:-/altercast/}"
 ENGINE="${ENGINE_URL:-https://manishvk18-live-character-voice.hf.space}"
 mkdir -p "$OUT"
-(cd web && VITE_BASE="$BASE" VITE_API_BASE="$ENGINE" npx vite build --outDir "$(cd .. && pwd)/$OUT" --emptyOutDir)
+OUT="$(cd "$OUT" && pwd)"  # absolute, so it works from inside web/
+(cd web && VITE_BASE="$BASE" VITE_API_BASE="$ENGINE" npx vite build --outDir "$OUT" --emptyOutDir)
 cp "$OUT/index.html" "$OUT/404.html"          # deep links (/voices, /lab …) load the app too
 touch "$OUT/.nojekyll"
 mkdir -p "$OUT/report" "$OUT/download"
