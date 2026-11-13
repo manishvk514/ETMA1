@@ -4,9 +4,9 @@
 # Safe to run again: steps that are already done are skipped.
 set -euo pipefail
 
-REPO="https://github.com/manish12323423546/sd.git"
-BRANCH="claude/nice-ritchie-5s42u6"
-DEST="$HOME/live-character-voice-app"
+REPO="https://github.com/manishvk514/altercast.git"
+BRANCH="main"
+DEST="$HOME/altercast"
 
 say() { printf '\n\033[1;34m==> %s\033[0m\n' "$1"; }
 
@@ -30,7 +30,7 @@ if [ -d "$DEST/.git" ]; then
 else
   git clone -b "$BRANCH" "$REPO" "$DEST"
 fi
-cd "$DEST/live-character-voice"
+cd "$DEST"
 
 say "4/6  Python + web dependencies (a few minutes)"
 make setup-python setup-web

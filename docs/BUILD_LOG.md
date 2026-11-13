@@ -716,3 +716,10 @@ hosted engine as default.
   promo video). Checked in headless Chromium: loads, reaches the engine, deep links work.
 - README front page links every part. Standalone repository `manishvk514/altercast` = this folder with its
   full history (git subtree split).
+
+## 2026-11-13 — everything on manishvk514/altercast
+- Repo https://github.com/manishvk514/altercast (main = this project, full history; gh-pages =
+  website https://manishvk514.github.io/altercast/). All links moved from the old repo
+  (Dockerfile clones altercast/main at the repo root, installer, privacy page, extension homepage,
+  report). Extension v0.7.1 (homepage link). Removed 8 stray built files committed by the earlier
+  site-builder bug.

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Altercast — Live Character Voice",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Re-voice live stream commentary in any Chrome tab with character voices, in sync, with live transcript and speaker labels.",
   "minimum_chrome_version": "116",
   "action": {
@@ -42,5 +42,5 @@
   "side_panel": {
     "default_path": "sidepanel.html"
   },
-  "homepage_url": "https://github.com/manish12323423546/sd/tree/claude/nice-ritchie-5s42u6/live-character-voice/extension"
+  "homepage_url": "https://github.com/manishvk514/altercast/tree/main/extension"
 }

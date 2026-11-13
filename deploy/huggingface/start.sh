@@ -15,7 +15,7 @@ while true; do
     echo ">>> updated ${before:0:8} -> ${after:0:8}"
     changed=$(git diff --name-only "$before" "$after" -- . 2>/dev/null)
     if echo "$changed" | grep -q "pyproject.toml"; then make setup-python || true; fi
-    if echo "$changed" | grep -qE "^live-character-voice/web/(package|src|public|index)|web/package"; then
+    if echo "$changed" | grep -qE "^(live-character-voice/)?web/(package|src|public|index)"; then
       (cd web && npm install --no-audit --no-fund && npm run build) || true
     fi
     if echo "$changed" | grep -q "engine/cli.py"; then make download-models || true; fi
